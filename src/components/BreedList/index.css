@@ -1,0 +1,16 @@
+.list-ul{
+    list-style:none;
+    column-count:4;
+    margin: 0 42px 0 0px;
+}
+.list-li{
+    background-color: black;
+    text-align: center;
+    color: antiquewhite;
+    margin-bottom: 10px;
+    padding:10px;
+    cursor: pointer;
+}
+.list-li:hover{
+    background-color:#da1e1e;
+}

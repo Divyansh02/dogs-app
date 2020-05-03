@@ -1,6 +1,12 @@
 const actionPrefix = 'Dog/'
 export const DogsInterface = {
-    GET_DOGS: `${actionPrefix}GET_DOGS`,
-    GET_DOGS_SUCCESS: `${actionPrefix}GET_DOGS_SUCCESS`,
-    GET_DOGS_FAILURE: `${actionPrefix}GET_DOGS_FAILURE`
+    GET_BREED_DETAILS: `${actionPrefix}GET_BREED_DETAILS`,
+    GET_BREED_DETAILS_SUCCESS: `${actionPrefix}GET_BREED_DETAILS_SUCCESS`,
+    GET_BREED_DETAILS_FAILURE: `${actionPrefix}GET_BREED_DETAILS_FAILURE`,
+    GET_DOGS_RANDOM: `${actionPrefix}GET_DOGS_RANDOM`,
+    GET_DOGS_RANDOM_SUCCESS: `${actionPrefix}GET_DOGS_RANDOM_SUCCESS`,
+    GET_DOGS_RANDOM_FAILURE: `${actionPrefix}GET_DOGS_RANDOM_FAILURE`,
+    GET_BREEDS: `${actionPrefix}GET_BREEDS`,
+    GET_BREEDS_SUCCESS: `${actionPrefix}GET_BREEDS_SUCCESS`,
+    GET_BREEDS_FAILURE: `${actionPrefix}GET_BREEDS_FAILURE`
 }

@@ -1,0 +1,15 @@
+.dogs-image {
+  display: flex;
+  overflow-x: auto;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.dogs-image img {
+  max-width: 100%;
+  min-width: 30%;
+  margin: 20px;
+  height: 40vh;
+}

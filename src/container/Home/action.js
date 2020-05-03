@@ -1,49 +1,108 @@
 import {DogsInterface} from "./interface";
-import {getDogsService} from "../../service/dogs";
+import {getBreedDetailsService,getDogsRandomlyService,getBreedList} from "../../service/dogs";
 
-const getDogData = () => {
+
+const getBreedDetails = () => {
     return {
-        type: DogsInterface.GET_DOGS,
+        type: DogsInterface.GET_BREED_DETAILS,
     };
 };
 
-const getDogDataSuccess = (res) => {
+const getBreedDetailsSuccess =  (res) => {
     return {
-        type: DogsInterface.GET_DOGS_SUCCESS,
+        type: DogsInterface.GET_BREED_DETAILS_SUCCESS,
         payload: res,
     };
 };
 
-const getDogDataFailure = (error) => {
+const getBreedDetailsFailure = (error) => {
     return {
-        type: DogsInterface.GET_DOGS_FAILURE,
+        type: DogsInterface.GET_BREED_DETAILS_FAILURE,
+        error: error,
+    };
+};
+
+const getBreedDetailsThunk = (breedName) => (dispatch) => {
+    try {
+        getBreedDetailsService(breedName)
+            .then((res) => dispatch(getBreedDetailsSuccess(res.data)))
+            .catch((e) => dispatch(getBreedDetailsFailure(e.response)))
+    } catch (e) {
+        dispatch(getBreedDetailsFailure(e));
+    }
+}
+
+const getDogsRandomlyData = () => {
+    return {
+        type: DogsInterface.GET_DOGS_RANDOM,
+    };
+};
+
+const getDogsRandomlyDataSuccess = (res) => {
+    return {
+        type: DogsInterface.GET_DOGS_RANDOM_SUCCESS,
+        payload: res,
+    };
+};
+
+const getDogsRandomlyDataFailure = (error) => {
+    return {
+        type: DogsInterface.GET_DOGS_RANDOM_FAILURE,
         error: error.message,
     };
 };
 
-const getDogsThunk = () => (dispatch) => {
+const getDogsRandomlyThunk = () => (dispatch) => {
     try {
-        getDogsService()
-            .then((res) => dispatch(getDogDataSuccess(res.data)))
-            .catch((e) => dispatch(getDogDataFailure(e.response.data)))
+        getDogsRandomlyService()
+            .then((res) => dispatch(getDogsRandomlyDataSuccess(res.data)))
+            .catch((e) => dispatch(getDogsRandomlyDataFailure(e)))
     } catch (e) {
-        dispatch(getDogDataFailure(e));
+        dispatch(getDogsRandomlyDataFailure(e));
+    }
+}
+
+const getBreeds = () => {
+    return {
+        type: DogsInterface.GET_BREEDS,
+    };
+};
+
+const getBreedsSuccess = (res) => {
+    return {
+        type: DogsInterface.GET_BREEDS_SUCCESS,
+        payload: res,
+    };
+};
+
+const getBreedsFailure = (error) => {
+    return {
+        type: DogsInterface.GET_BREEDS_FAILURE,
+        error: error.message,
+    };
+};
+
+const getBreedsThunk = () => (dispatch) => {
+    try {
+        getBreedList()
+            .then((res) => dispatch(getBreedsSuccess(res.data)))
+            .catch((e) => dispatch(getBreedsFailure(e)))
+    } catch (e) {
+        dispatch(getBreedsFailure(e));
     }
 }
 
 export {
-    getDogData,
-    getDogDataSuccess,
-    getDogDataFailure,
-    getDogsThunk
+    getBreedDetails,
+    getBreedDetailsSuccess,
+    getBreedDetailsFailure,
+    getBreedDetailsThunk,
+    getDogsRandomlyData,
+    getDogsRandomlyDataSuccess,
+    getDogsRandomlyDataFailure,
+    getDogsRandomlyThunk,
+    getBreeds,
+    getBreedsSuccess,
+    getBreedsFailure,
+    getBreedsThunk
 }
-
-
-// const getStateList = () => (dispatch) => apiClient
-//     .get(`${GET_STATES_LIST}`)
-//     .then((stateList) => {
-//         dispatch(getAvailableStates(stateList.data.data));
-//     })
-//     .catch((err) => {
-//         dispatch(error(err));
-//     });

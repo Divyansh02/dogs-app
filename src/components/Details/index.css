@@ -1,0 +1,9 @@
+.specific-breed {
+  column-count: 3;
+  margin-right:20px;
+}
+.specific-breed img {
+  width: 100%;
+  height: 40vh;
+  padding:10px;
+}
