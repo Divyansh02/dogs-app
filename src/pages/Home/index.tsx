@@ -2,53 +2,62 @@ import React, { Component } from "react";
 import "./index.css";
 import { connect } from "react-redux";
 import {
-  getBreedDetailsThunk,
   getDogsRandomlyThunk,
   getBreedsThunk
 } from "../../container/Home/action";
 import {
-  getBreedDetails,
   getDogsImageRandomlySelector,
   getBreedList,getErrorState
-} from "../../container/Home/selector";
-import Header from "../../components/Header";
+} from "../../container/Home/selector";                   
 import { Carousel } from "../../components/Carousel";
-import { BreedList } from "../../components/BreedList";
+import { BreedList } from "../../components/BreedListCollectionHomePage";
 import { withAlert } from "react-alert";
 
-class Home extends Component {
+
+
+interface HomePageProps{
+  getRandomDogsThunk:()=>{};
+  getBreedListThunk:()=>{};
+  history:any;
+  randomDogsImage:Array<string>;
+  breedList:any;
+  error:string;
+  alert:any
+}
+
+class Home extends Component<HomePageProps,{}> {
   componentDidMount() {
     this.props.getRandomDogsThunk();
     this.props.getBreedListThunk();
   }
 
-  handleBreedDetail=()=>{
-   this.props.getBreedDetailsThunk()
+  handleLogout=():void => {
+    localStorage.removeItem("user")
+    this.props.history.push('/login')
   }
 
-  render() {
+  render():React.ReactNode {
     const { randomDogsImage,breedList,error,alert } = this.props;
     if(error){
       alert.error(error);
     }
     return (
       <div className="homepage">
+        <button type="submit" onClick={this.handleLogout}>Logout</button>
         <Carousel data={randomDogsImage} />
-        <BreedList breedList={breedList} handleBreedDetail={this.handleBreedDetail}/>
+        <BreedList breedList={breedList}/>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  breedDetails: getBreedDetails(state),
   randomDogsImage: getDogsImageRandomlySelector(state),
   breedList:getBreedList(state),
   error: getErrorState(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getBreedDetails: () => dispatch(getBreedDetailsThunk()),
   getRandomDogsThunk: () => dispatch(getDogsRandomlyThunk()),
   getBreedListThunk:()=> dispatch(getBreedsThunk())
 });

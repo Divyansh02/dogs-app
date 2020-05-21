@@ -1,15 +1,18 @@
 .list-ul{
     list-style:none;
-    column-count:4;
-    margin: 0 42px 0 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 96%;
 }
 .list-li{
     background-color: black;
     text-align: center;
     color: antiquewhite;
-    margin-bottom: 10px;
+    margin: 10px 0px 10px 2px;
     padding:10px;
     cursor: pointer;
+    width: 30%;
 }
 .list-li:hover{
     background-color:#da1e1e;

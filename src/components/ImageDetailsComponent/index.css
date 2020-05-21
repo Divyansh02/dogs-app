@@ -1,0 +1,12 @@
+.specific-breed {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width:100%;
+}
+.specific-breed img {
+  width: 31%;
+  height: 40vh;
+  padding:10px;
+  border-radius: 20px;
+}

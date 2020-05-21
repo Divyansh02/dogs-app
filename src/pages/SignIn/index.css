@@ -1,0 +1,24 @@
+.signin-container{
+    width:75%;
+    border:1px solid gray;
+    margin: 0 auto;
+}
+.input-fields{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.input-fields label{
+    display: flex;
+    width:35%;
+    justify-content: space-around;
+    padding:12px;
+}
+.button{
+    width:80px;
+    border-color: blueviolet;
+    color: #fff;
+    box-shadow: 0 0 40px 40px blueviolet inset, 0 0 0 0 blueviolet;
+    transition: all 150ms ease-in-out;
+    margin-left: 83px;
+}
